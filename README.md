@@ -11,7 +11,7 @@ I used the data generated after few laps on the basic circuit using "Dominic" ve
 
 ## Pre-Processing ##
 
-For my image pre-processing, I used some of the functions I developed for the [Traffic Sign Classifier Project](https://github.com/kingkastle/Self-Driving-Car-ND/blob/master/Traffic_Sign_Classifier.ipynb) as well as some techniques I learned on the separate blogposts by [Vivek Yadav](https://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9#.5zfkeeph4), [Mojtaba Valipour](https://medium.com/@ValipourMojtaba/my-approach-for-project-3-2545578a9319#.em46k7679) and [Paul Heraty's](https://carnd-forums.udacity.com/questions/26214464/behavioral-cloning-cheatsheet. These post were helpful to better understand the project pipeline.
+For my image pre-processing, I used some of the functions I developed for the [Traffic Sign Classifier Project](https://github.com/kingkastle/Self-Driving-Car-ND/blob/master/Traffic_Sign_Classifier.ipynb) as well as some techniques I learned on the separate blogposts by [Vivek Yadav](https://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9#.5zfkeeph4), [Mojtaba Valipour](https://medium.com/@ValipourMojtaba/my-approach-for-project-3-2545578a9319#.em46k7679) and [Paul Heraty's](https://carnd-forums.udacity.com/questions/26214464/behavioral-cloning-cheatsheet). These post were helpful to better understand the project pipeline.
 
 In order to digest the images, only the center camera is used, these are cropped and resized to reduce noise like horizonts and reduce computational costs, apart of this:
 1. The image is randomly translated vertically
@@ -22,7 +22,7 @@ In the case of horizontal translation, a gain is applied to the magnitude of the
 
 A sample of my augmentation for a single image is shown here:
 
-![augmented_image](../imgsaugmented_data.jpg)
+![augmented_image](imgs/augmented_data.jpg)
 
 
 ## CNN Model Architecture ##
@@ -66,7 +66,7 @@ I generated a dataset with shape: ```(11150, 100, 200, 3)```. For training, I di
 
 My attempts at training the model, are unsuccessful, as the car seemed to drive almost perfectly straight all the time.  I suspect this is due the majority of the data having zero steering angle, and the model tending to overfit to this situation.  This is one difficulty of a mean-square error optimization when most of the output values are the same.  My first mitigation strategy for this was to remove images where the absolute value of the steering angle is less than 0.1. This approach eliminated 3431 images from the dataset but still didn't help to keep the car on track and not follow a straight line.
 
-![unbalanced_balanced_dataset](../imgs/after_before_dataset_shape.jpg)
+![unbalanced_balanced_dataset](imgs/after_before_dataset_shape.jpg)
 
 ## Reflections ##
 
